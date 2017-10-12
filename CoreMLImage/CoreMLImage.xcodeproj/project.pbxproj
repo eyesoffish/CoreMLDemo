@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		176D81601F8F17F2004F9717 /* MobileNet.mlmodel in Resources */ = {isa = PBXBuildFile; fileRef = 176D815F1F8F17ED004F9717 /* MobileNet.mlmodel */; };
+		176D81611F8F17F7004F9717 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 176D815F1F8F17ED004F9717 /* MobileNet.mlmodel */; };
 		9701BEC01F8D0AEC0094B8AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9701BEBF1F8D0AEC0094B8AA /* AppDelegate.swift */; };
 		9701BEC21F8D0AEC0094B8AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9701BEC11F8D0AEC0094B8AA /* ViewController.swift */; };
 		9701BEC51F8D0AEC0094B8AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9701BEC31F8D0AEC0094B8AA /* Main.storyboard */; };
@@ -14,7 +16,6 @@
 		9701BECA1F8D0AEC0094B8AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9701BEC81F8D0AEC0094B8AA /* LaunchScreen.storyboard */; };
 		9701BED51F8D0AEC0094B8AA /* CoreMLImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9701BED41F8D0AEC0094B8AA /* CoreMLImageTests.swift */; };
 		9701BEE01F8D0AEC0094B8AA /* CoreMLImageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9701BEDF1F8D0AEC0094B8AA /* CoreMLImageUITests.swift */; };
-		9701BEEE1F8D0C220094B8AA /* MobileNet.mlmodel in Resources */ = {isa = PBXBuildFile; fileRef = 9701BEED1F8D0B110094B8AA /* MobileNet.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		176D815F1F8F17ED004F9717 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 		9701BEBC1F8D0AEC0094B8AA /* CoreMLImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreMLImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9701BEBF1F8D0AEC0094B8AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9701BEC11F8D0AEC0094B8AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,7 +50,6 @@
 		9701BEDB1F8D0AEC0094B8AA /* CoreMLImageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreMLImageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9701BEDF1F8D0AEC0094B8AA /* CoreMLImageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLImageUITests.swift; sourceTree = "<group>"; };
 		9701BEE11F8D0AEC0094B8AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9701BEED1F8D0B110094B8AA /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +100,7 @@
 		9701BEBE1F8D0AEC0094B8AA /* CoreMLImage */ = {
 			isa = PBXGroup;
 			children = (
-				9701BEED1F8D0B110094B8AA /* MobileNet.mlmodel */,
+				176D815F1F8F17ED004F9717 /* MobileNet.mlmodel */,
 				9701BEBF1F8D0AEC0094B8AA /* AppDelegate.swift */,
 				9701BEC11F8D0AEC0094B8AA /* ViewController.swift */,
 				9701BEC31F8D0AEC0094B8AA /* Main.storyboard */,
@@ -235,7 +236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9701BEEE1F8D0C220094B8AA /* MobileNet.mlmodel in Resources */,
+				176D81601F8F17F2004F9717 /* MobileNet.mlmodel in Resources */,
 				9701BECA1F8D0AEC0094B8AA /* LaunchScreen.storyboard in Resources */,
 				9701BEC71F8D0AEC0094B8AA /* Assets.xcassets in Resources */,
 				9701BEC51F8D0AEC0094B8AA /* Main.storyboard in Resources */,
@@ -263,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				176D81611F8F17F7004F9717 /* MobileNet.mlmodel in Sources */,
 				9701BEC21F8D0AEC0094B8AA /* ViewController.swift in Sources */,
 				9701BEC01F8D0AEC0094B8AA /* AppDelegate.swift in Sources */,
 			);
@@ -432,13 +434,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				COREML_CODEGEN_LANGUAGE = Swift;
-				DEVELOPMENT_TEAM = EDRSDX39U9;
+				DEVELOPMENT_TEAM = SD3R6PGCNS;
 				INFOPLIST_FILE = CoreMLImage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.zl.coreImage.CoreMLImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -448,13 +451,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				COREML_CODEGEN_LANGUAGE = Swift;
-				DEVELOPMENT_TEAM = EDRSDX39U9;
+				DEVELOPMENT_TEAM = SD3R6PGCNS;
 				INFOPLIST_FILE = CoreMLImage/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.zl.coreImage.CoreMLImage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

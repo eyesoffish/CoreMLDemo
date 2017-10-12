@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import CoreML
+import Vision
+
 
 class ViewController: UIViewController {
 
@@ -62,9 +65,11 @@ extension ViewController{
     
     func takePhoto(from source:PhotoSource){
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = source == .camera ? .camera : .photoLibrary
-        imagePicker.allowsEditing = true
+        
+        imagePicker.sourceType = (source == .camera ? .camera : .photoLibrary)
         imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        
         present(imagePicker, animated: true, completion: nil)
     }
 }
@@ -86,7 +91,41 @@ extension ViewController: UIImagePickerControllerDelegate,UINavigationController
     
     func guess(image:UIImage){
         
+        guard let ciImage = CIImage(image:image) else{
+            fatalError("不能创建image")
+        }
+        
+        guard let model = try? VNCoreMLModel(for: MobileNet().model) else{
+            fatalError("不能加载model")
+        }
+        
+        let request = VNCoreMLRequest(model: model) { (request, error) in
+            guard let results = request.results as? [VNClassificationObservation], let first = results.first else{
+                fatalError("不能匹配结果")
+            }
+            DispatchQueue.main.async {
+                self.labelDesc.text = first.identifier
+                self.labelPercent.text = "\(first.confidence * 100)%"
+            }
+        }
+        
+        let handler = VNImageRequestHandler(ciImage: ciImage)
+        
+        //预测是一个资源占用型的操作
+        DispatchQueue.global(qos: .userInteractive).async {
+            try? handler.perform([request])
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 
