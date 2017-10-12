@@ -1,0 +1,92 @@
+//
+//  ViewController.swift
+//  CoreMLImage
+//
+//  Created by 邹琳 on 2017/10/10.
+//  Copyright © 2017年 邹琳. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var labelPercent: UILabel!
+    
+    @IBOutlet weak var labelDesc: UILabel!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        imageView.layer.masksToBounds = true
+    }
+
+    @IBAction func chooseImage(_ sender: Any) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let cameraAction = UIAlertAction(title: "拍照", style: .default) { _ in
+            self.takePhoto(from: .camera)
+        }
+        
+        let photoLibray = UIAlertAction(title: "相册", style: .default) { _ in
+            self.takePhoto(from: .photoLibray)
+        }
+        
+        let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        
+        actionSheet.addAction(cameraAction)
+        actionSheet.addAction(photoLibray)
+        actionSheet.addAction(cancel)
+        
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+}
+
+extension ViewController{
+    func resize(image:UIImage, newSize:CGSize) -> UIImage?{
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0)
+        let size = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        image.draw(in: size)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+}
+
+extension ViewController{
+    enum PhotoSource {
+        case camera,photoLibray
+    }
+    
+    func takePhoto(from source:PhotoSource){
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = source == .camera ? .camera : .photoLibrary
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+    }
+}
+
+extension ViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        dismiss(animated: true, completion: nil)
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            imageView.image = image
+            let fixSize = CGSize(width: 224, height: 224)
+            if let newImage = resize(image: image, newSize: fixSize){
+                guess(image: newImage)
+            }
+        }
+    }
+    
+    func guess(image:UIImage){
+        
+    }
+}
+
+
